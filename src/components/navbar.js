@@ -155,7 +155,16 @@ const Navbar = () => {
                             to="./About"
                           >
                             About
-                          </Link>
+                        </Link>
+                        
+                      </Box>
+                       <Box sx={{ mr: 8, pt: 2 }}>
+                          <Link
+                            style={{ color: "Blue", textDecoration: "none" }}
+                            to="./login"
+                          >
+                            Login
+                        </Link>
                         </Box>
                       </Box>
                     }
