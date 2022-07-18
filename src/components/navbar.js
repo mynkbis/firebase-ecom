@@ -213,16 +213,31 @@ const Navbar = () => {
                   style={{ color: "white", textDecoration: "none" }}
                   to="./About"
               >
-                 <Link
+          
+                  About
+                </Link>
+            </Button>
+            
+
+  <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+               
+
+
+              <Link
                   style={{ color: "white", textDecoration: "none" }}
                   to="./login"
                 >
                   Login
                 </Link>
-                
-                  About
-                </Link>
-              </Button>
+            </Button>
+
+
+
+
+
             </Box>
 
             <Box sx={{ flexGrow: 0 }}>

@@ -45,7 +45,7 @@ signInWithPopup(auth, provider)
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-      if(user)navigate("../profile")
+      if(user)navigate("admin/dashboard")
     // ...
   }).catch((error) => {
     // Handle Errors here.
