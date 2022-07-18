@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminLogin from './AdminLogin'
+import AdminLogin from './adminLogin'
 
 const Home = () => {
   return (

@@ -12,6 +12,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { auth, db, } from "../firebase"
+import { signInWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth"
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup } from "firebase/auth"
+
 
  const AdminLogin = () => {
   const handleSubmit = (event) => {
@@ -22,11 +29,34 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
       password: data.get('password'),
     });
   };
+   
+   
+    const navigate = useNavigate();
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+   const googleLogin = () => {
+    
+  
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+      if(user)navigate("../profile")
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+      //  alert("Please try again")
+  });
+}
 
   return (
    <>Admin form Login
      {/* <ThemeProvider theme={theme}></ThemeProvider> */}
-      <Container component="main" maxWidth="xs">
+   <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -42,8 +72,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+         <TextField
               margin="normal"
               required
               fullWidth
@@ -63,10 +92,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+                      
+           
+           
             <Button
               type="submit"
               fullWidth
@@ -74,23 +102,26 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button>
+            </Button> 
+           
+            <button onClick={() => { googleLogin() }}>Google Login</button>
+            
+            
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
-            
-            </Grid>
+                          </Grid>
           </Box>
-        </Box>
-        {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
+  
+        
+      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </>
   );
 }
-
 export default AdminLogin
 
 

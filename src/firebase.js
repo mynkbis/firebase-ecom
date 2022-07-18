@@ -3,8 +3,7 @@ import firebase from 'firebase/app';
 import {initializeApp}  from "firebase/app";
 import  {getAuth, onAuthStateChanged} from "firebase/auth"
 import { getDoc, getFirestore, doc, setDoc } from "firebase/firestore"
-
-
+import { useEffect, useState } from 'react';
 
 const firebaseConfig = {
   
@@ -20,3 +19,5 @@ measurementId: process.env.REACT_APP_MEASUREMENT_ID
 const app = initializeApp(firebaseConfig)
 export const db=getFirestore(app)
 export const auth = getAuth(app);
+
+console.log(db)
