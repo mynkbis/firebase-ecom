@@ -183,7 +183,7 @@ React.useEffect(() => {
                           >
                             Login
                           </Link>}
-                         {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='/admin/dashboard'>Dashboard</NavLink>}
+                         {user && <NavLink style={{ color: "Blue", textDecoration: "none" }} to='../home/admin/dashboard'>Dashboard</NavLink>}
 
                         </Box>
                       </Box>
@@ -254,7 +254,7 @@ React.useEffect(() => {
                   Login
                 </NavLink>
               }
-              {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='/admin/dashboard'>Dashboard</NavLink>}
+              {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='../home/admin/dashboard'>Dashboard</NavLink>}
             </Button>
 
 
@@ -272,7 +272,7 @@ React.useEffect(() => {
                   to="/cart"
                 >
                   <IconButton aria-label="cart">
-                    <StyledBadge badgeContent={7} color="primary">
+                    <StyledBadge badgeContent={0} color="primary">
                       <ShoppingCartIcon>
                         <Accordion>
                           <AccordionSummary
