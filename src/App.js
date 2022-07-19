@@ -8,6 +8,9 @@ import Footer from './components/footer';
 import About from './pages/about';
 import UserLogin from './pages/userLogin'
 import Dashboard from './components/dashboard'
+import ProductUpload from './pages/productUpload'
+import ResetAdminPass from './pages/forgotAdminPass'
+import Reset from './pages/forgotPass';
 // import SignUp from './Pages/signUp';
 
 function App() {
@@ -20,8 +23,10 @@ function App() {
         <Route exact path='/admin/login' element={<AdminLogin />} /> 
         <Route exact path='/about' element={<About />} /> 
         <Route exact path='/login' element={<UserLogin />} /> 
-         <Route exact path='home/admin/dashboard' element={< Dashboard />} /> 
-      
+         <Route exact path='/forgetpassword' element={<Reset />} /> 
+        <Route exact path='home/admin/dashboard' element={< Dashboard />} /> 
+        <Route exact path='home/admin/dashboard/uploadproduct' element={< ProductUpload />} /> 
+         <Route exact path='/admin/forgetpassword' element={<ResetAdminPass/>} /> 
             
       </Routes>   
       <div className='footer'>

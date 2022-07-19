@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -21,22 +21,29 @@ import { getAuth, signInWithPopup } from "firebase/auth"
 
 
  const AdminLogin = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-   
-   
-    const navigate = useNavigate();
+
+   const [fValues, setFValues] = useState({
+    loginEmail: "",
+    loginPassword:""
+   })
+   const navigate = useNavigate();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
-   const googleLogin = () => {
-    
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+
+
+
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+  };
+   
+const googleLogin = () => {   
   
 signInWithPopup(auth, provider)
   .then((result) => {
@@ -52,6 +59,11 @@ signInWithPopup(auth, provider)
       //  alert("Please try again")
   });
 }
+
+   const handleChange = (e) => {
+ // console.log("ufyifyfff", e.target.value, e.target.name)
+  setFValues({...fValues, [e.target.name]:e.target.value})
+  }
 
   return (
    <>Admin form Login
@@ -91,9 +103,7 @@ signInWithPopup(auth, provider)
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-                      
-           
+            />         
            
             <Button
               type="submit"
@@ -104,12 +114,13 @@ signInWithPopup(auth, provider)
               Sign In
             </Button> 
            
-            <button onClick={() => { googleLogin() }}>Google Login</button>
-            
+          <button type="button" class="login-with-google-btn" onClick={() => { googleLogin() }}>
+  Sign in with Google
+</button>
             
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="/admin/forgetpassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>

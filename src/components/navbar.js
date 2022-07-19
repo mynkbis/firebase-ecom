@@ -21,10 +21,12 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import { auth } from '../firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-
+import SignoutButton from "./signOut"
+import { NavLink } from 'react-router-dom'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -104,6 +106,21 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const [user, setUser] = React.useState({})
+  
+  
+
+React.useEffect(() => {
+        let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)   
+        //     if (currentUser !== null) {
+        // }
+        })
+        return () => unsubscribe();
+        
+   },[])
+
+
   return (
       <AppBar position="static">
         <Container maxWidth="xl">
@@ -158,13 +175,16 @@ const Navbar = () => {
                         </Link>
                         
                       </Box>
-                       <Box sx={{ mr: 8, pt: 2 }}>
+                      <Box sx={{ mr: 8, pt: 2 }}>
+                        {!user &&
                           <Link
                             style={{ color: "Blue", textDecoration: "none" }}
                             to="./login"
                           >
                             Login
-                        </Link>
+                          </Link>}
+                         {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='/admin/dashboard'>Dashboard</NavLink>}
+
                         </Box>
                       </Box>
                     }
@@ -224,24 +244,28 @@ const Navbar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                
+{!user && 
+             
 
-
-              <Link
+              <NavLink
                   style={{ color: "white", textDecoration: "none" }}
                   to="./login"
                 >
                   Login
-                </Link>
+                </NavLink>
+              }
+              {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='/admin/dashboard'>Dashboard</NavLink>}
             </Button>
 
 
 
 
 
-            </Box>
+            </Box>   <SignoutButton/>
 
             <Box sx={{ flexGrow: 0 }}>
-              {/* <Tooltip> */}
+            {/* <Tooltip> */}
+           
               <IconButton>
                 <Link
                   style={{ color: "white", textDecoration: "none" }}
@@ -293,15 +317,18 @@ const Navbar = () => {
                 </Link>
       
               </IconButton>
-              {/* </Tooltip> */}
+            {/* </Tooltip> */}
+          
           </Box>
                    {/* <MaterialUISwitch
                   sx={{ m: 1, pl:1}}
                   defaultChecked
                   // onClick={(e) => handleTheme()}
                 ></MaterialUISwitch> */}
-          </Toolbar>
-        </Container>
+        </Toolbar>
+         
+      </Container>         
+            
       </AppBar>
     );
 };

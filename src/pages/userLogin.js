@@ -20,6 +20,19 @@ import { getAuth, signInWithPopup } from "firebase/auth"
 
  const UserLogin = () => {
 
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="#">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
    
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -106,13 +119,16 @@ signInWithPopup(auth, provider)
             >
               Sign In
             </Button> 
-           
-            <button onClick={() => { googleLogin() }}>Google Login</button>
-            
-            
+          <Box df
+          >
+                 
+          <button type="button" class="login-with-google-btn" onClick={() => { googleLogin() }}>
+  Sign in with Google
+</button>
+            </Box>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="/forgetpassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
@@ -135,22 +151,3 @@ export default UserLogin
 
 
 
-
-
-
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-// const theme = createTheme();
-
-//  function SignIn() {
