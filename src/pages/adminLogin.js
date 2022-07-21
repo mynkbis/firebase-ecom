@@ -1,158 +1,83 @@
 import React, { useState } from 'react'
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { auth, db, } from "../firebase"
-import { signInWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth"
+import { signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth"
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPopup } from "firebase/auth"
+import * as Yup from 'yup';
 
-
- const AdminLogin = () => {
-
-   const [fValues, setFValues] = useState({
-    loginEmail: "",
-    loginPassword:""
-   })
-   const navigate = useNavigate();
+const DisplayingErrorMessagesSchema = Yup.object().shape({
+   username: Yup.string()
+     .min(2, 'Too Short!')
+     .max(50, 'Too Long!')
+     .required('Required'),
+   email: Yup.string().email('Invalid email').required('Required'),
+ });
+ 
+const AdminLogin = () => {
+const navigate = useNavigate();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
 
+    const googleLogin = async () =>{
+    await signInWithPopup(auth, provider)
+          .then((result) => {
+             // const token = credential.accessToken;
+           // The signed-in user info.
+            localStorage.setItem("Email",JSON.stringify(result.user.email))
+            const user = result.user;
+           if (user) navigate("admin/dashboard")
+          }).catch((error) => {
+           // Handle Errors here.
+          //  alert("Please try again")
+          })}
 
 
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
-  };
-   
-const googleLogin = () => {   
-  
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-      if(user)navigate("admin/dashboard")
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-      //  alert("Please try again")
-  });
-}
+  return(
+  <div>
+    <h1>Admin Login</h1>
+    <Formik
+      initialValues={{
+        username: '',
+        email: '',
+      }}
+      validationSchema={DisplayingErrorMessagesSchema}
+      onSubmit={values => {
+        // same shape as initial values
+        console.log(values);
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="username" />
+          {/* If this field has been touched, and it contains an error, display it
+            */}
+          {touched.username && errors.username && <div>{errors.username}</div>}
+          <Field name="email" />
+          {/* If this field has been touched, and it contains an error, display
+           it */}
+          {touched.email && errors.email && <div>{errors.email}</div>}
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+      </Formik>
+      
 
-   const handleChange = (e) => {
- // console.log("ufyifyfff", e.target.value, e.target.name)
-  setFValues({...fValues, [e.target.name]:e.target.value})
-  }
 
-  return (
-   <>Admin form Login
-     {/* <ThemeProvider theme={theme}></ThemeProvider> */}
-   <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-         <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />         
-           
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button> 
-           
-          <button type="button" class="login-with-google-btn" onClick={() => { googleLogin() }}>
-  Sign in with Google
+<button type="button" class="login-with-google-btn" onClick={() => { googleLogin() }}>
+   Sign in with Google
 </button>
-            
-            <Grid container>
-              <Grid item xs>
-                <Link href="/admin/forgetpassword" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-                          </Grid>
-          </Box>
-  
-        
-      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
-      </Container>
-    </>
-  );
-}
-export default AdminLogin
+    
 
+      
+  </div>)
+};
 
-
-
-
-
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
-
-// const theme = createTheme();
-
-//  function SignIn() {
+export default AdminLogin;

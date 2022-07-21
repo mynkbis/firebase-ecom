@@ -18,8 +18,8 @@ const SignoutButton = () => {
 
     const logout = async () => {
        await signOut(auth);
-        // sessionStorage.clear();
-        Navigate("../login")
+        localStorage.clear();
+        Navigate("../")
     
     }
 

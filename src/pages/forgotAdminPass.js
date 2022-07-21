@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { } from "firebase/auth";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from '../firebase'
 // import '../Pages/reset.css'
 
 function ResetAdminPass() {
   const [email, setEmail] = useState("");
-
+const navigate=useNavigate()
  
  const sendPasswordReset = async (email) => {
  try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
+   alert("Password reset link sent!");
+   navigate("/admin/login")
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -22,7 +23,7 @@ function ResetAdminPass() {
   return (
     <>
       Hello admin forget password
-    {/* <div className="resetButton">Reset Password
+    <div className="resetButton">Reset Password
       <div className="resetButtonBox">
        <div>
               <input
@@ -41,7 +42,7 @@ function ResetAdminPass() {
         </button>
         
       </div>
-      </div> */}
+      </div>
       </>
   );
 }

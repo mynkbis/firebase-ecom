@@ -1,10 +1,14 @@
+* {
+  margin: 0
+}
+
 .App {
   text-align: center;
 }
 
 .footer {
   position: relative;
-  top: 90vh;
+  top: 50vh;
   display: flex;
 }
 
