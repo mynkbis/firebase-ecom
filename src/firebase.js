@@ -4,7 +4,7 @@ import {initializeApp}  from "firebase/app";
 import  {getAuth, onAuthStateChanged} from "firebase/auth"
 import { getDoc, getFirestore, doc, setDoc } from "firebase/firestore"
 import { useEffect, useState } from 'react';
-
+import {getStorage } from "firebase/storage"
 const firebaseConfig = {
   
 apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,6 +19,6 @@ measurementId: process.env.REACT_APP_MEASUREMENT_ID
 const app = initializeApp(firebaseConfig)
 export const db=getFirestore(app)
 export const auth = getAuth(app);
-// export const storage = firebase.storage();
+export const storage = getStorage(app);
 
 //console.log(db)

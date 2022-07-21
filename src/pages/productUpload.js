@@ -8,9 +8,11 @@ import { auth, db } from '../firebase'
 import { collection, addDoc} from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { storage } from '../firebase'
+import {ref, uploadBytes} from "firebase/storage"
+import {v4 } from "uuid"
 
- 
- const ProductSchema = Yup.object().shape({
+const ProductSchema = Yup.object().shape({
    details: Yup.string()
      .min(2, 'Too Short!')
      .max(50, 'Too Long!')
@@ -28,6 +30,7 @@ import * as Yup from 'yup';
 
 
 const ProductUpload = () => {
+    const [imageUpload, setImageUpload] = useState(null);
     const [product, setProduct] = useState({
         Title:"",
         Details: "",
@@ -40,6 +43,18 @@ const ProductUpload = () => {
         test: ""
         
     })
+
+
+const handleImageUpload = (e) => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+    uploadBytes(imageRef, imageUpload).then(() => {
+        alert("upload successful")
+    })
+
+    
+}
+
     const navigation = useNavigate();
 
     const handleChange = (e) => {
@@ -174,9 +189,8 @@ const ProductUpload = () => {
                                         Product image
                                     </Typography>
                                      <Grid item xs={12}>
-                                     {/* <input  type="file" ref={imageRef} defaultValue={product.Image}
-                                                onChange={(e) => handleImageChange(e)}
-                                                onClick={()=>imageUploadRef()}></input> */}
+                                            <input type="file" defaultValue={product.Image}  onChange={(e)=>setImageUpload(e.target.files[0])} />
+                                            <Button variant='outlined' onClick={(e)=>handleImageUpload(e)}>Upload</Button>
                                     </Grid>
                                     
                                 </Grid>
