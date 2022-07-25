@@ -1,0 +1,84 @@
+.navBox {
+    color: #4A99D3;
+    position: absolute;
+    left: 2rem;
+    top: 3rem;
+    font-family: "Objective";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    display: inline-flex;
+
+}
+
+.navBox p {
+    margin-left: 16rem;
+    margin-right: -10rem;
+}
+
+.group {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 42rem;
+    font-size: 1.5rem;
+    color: #0F001A;
+    font-weight: 400;
+
+
+}
+
+.group div {
+    margin-right: 5rem;
+    margin-left: 2rem;
+}
+
+.group1 {
+    color: #4A99D3;
+    padding-right: 2rem
+}
+
+
+/* .navBox p {
+      color: #4A99D3;
+      position: absolute;
+      width: 128px;
+      height: 42px;
+      left: 245px;
+      top: 45px;
+
+      font-family: 'Objective';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 42px;
+  }
+
+  .group {
+      position: absolute;
+      width: 312px;
+      height: 19px;
+      left: 883px;
+      top: 59px;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .group1 {
+      color: #4A99D3;
+  } */
+
+@media only screen and (max-width: 768px) {
+
+    html {
+        font-size: 45%;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
+
+    .navBox p {
+        margin-left: 5rem;
+        margin-right: -30rem;
+    }
+}

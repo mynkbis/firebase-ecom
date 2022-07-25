@@ -21,11 +21,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import SignoutButton from "./signOut"
+import SignoutButton from "../signOut"
 import { NavLink } from 'react-router-dom'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({

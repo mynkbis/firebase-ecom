@@ -1,19 +1,19 @@
 
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/home'
-import AdminLogin from './pages/adminLogin';
-import NavBar from './components/navbar';
-import Footer from './components/footer';
-import About from './pages/about';
-import UserLogin from './pages/userLogin'
-import Dashboard from './components/dashboard'
-import ProductUpload from './pages/productUpload'
-import ResetAdminPass from './pages/forgotAdminPass'
-import Reset from './pages/forgotPass';
-import EditProducts from './pages/editProducts';
+import Home from '../src/pages/home/home.js'
+// import AdminLogin from './pages/adminLogin';
+import NavBar from './components/navbar/navbar';
+// import Footer from './components/footer';
+// import About from './pages/about';
+// import UserLogin from './pages/userLogin'
+// import Dashboard from './components/dashboard'
+// import ProductUpload from './pages/productUpload'
+// import ResetAdminPass from './pages/forgotAdminPass'
+// import Reset from './pages/forgotPass';
+// import EditProducts from './pages/editProducts';
 // import SignUp from './Pages/signUp';
-import ErrorPage from './pages/error'
+// import ErrorPage from './pages/error'
 
 function App() {
   return (

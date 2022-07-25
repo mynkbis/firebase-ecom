@@ -3,7 +3,7 @@ import { } from "firebase/auth";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 // import '../Pages/reset.css'
 
 function ResetAdminPass() {

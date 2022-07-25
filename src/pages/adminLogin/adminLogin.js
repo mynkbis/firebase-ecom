@@ -16,9 +16,9 @@ import TextField from '@mui/material/TextField';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { CardContent } from '@mui/material';
-import Validation from "../components/validation"
+import Validation from "../../components/validation"
 import { useDispatch, useSelector } from 'react-redux';
-import { login} from '../redux/userSlice'
+import { login} from '../../redux/userSlice'
 
 // eslint-disable-next-line no-unused-vars
 const DisplayingErrorMessagesSchema = Yup.object().shape({
