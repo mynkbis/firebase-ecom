@@ -52,7 +52,6 @@ const handleImageUpload = (e) => {
         alert("upload successful")
     })
 
-    
 }
 
     const navigation = useNavigate();

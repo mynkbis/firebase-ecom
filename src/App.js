@@ -20,9 +20,9 @@ function App() {
     <div className="App">
     <NavBar/>
    <Routes>
-        {/* <Route exact path="/" element={<Home />} /> */}
+      <Route exact path="/" element={<Home />} />
         {/* <Route exact path="/home" element={<Home/>}/> */}
-        <Route exact path='/' element={<AdminLogin />} /> 
+        {/* <Route exact path='/' element={<AdminLogin />} /> 
         <Route exact path='/about' element={<About />} /> 
         <Route exact path='/login' element={<UserLogin />} /> 
          <Route exact path='/forgetpassword' element={<Reset />} /> 
@@ -30,11 +30,11 @@ function App() {
         <Route exact path='/admin/dashboard/uploadproduct' element={< ProductUpload />} /> 
          <Route exact path='/admin/forgetpassword' element={<ResetAdminPass/>} /> 
         <Route exact path='/admin/dashboard/editproductdetails' element={<EditProducts />} /> 
-        <Route path='*' element={<ErrorPage />} /> 
+        <Route path='*' element={<ErrorPage />} />  */}
       </Routes>   
-      <div className='footer'>
+      {/* <div className='footer'>
         <Footer />
-        </div>
+        </div> */}
     </div>
   );
 }
