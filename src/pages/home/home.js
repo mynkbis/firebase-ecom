@@ -37,7 +37,7 @@ const Home = () => {
               <img style={{ width: "19.5rem", height: "3rem" }} src={bannerImage2} alt="playstores" />
             </div>
           </div>
-          <img className='mobilePic' style={{ width: "40rem", height: "48rem" }}
+          <img className='mobilePic' style={{ width: "38rem", height: "48rem" }}
             src={bannerImage} alt='mock1' />
         </section>
       </div>
@@ -67,16 +67,13 @@ const Home = () => {
               dolore magna aliqua.</p>
             <h6 className='learnMore'>Learn more 
             <img src={bannerImage5} alt="bannerImage5" /></h6>
-          </div>
+          </div>  
 
           {/*second image div */}
 
             <div className='bannerImage3'>
-            <img src={bannerImage3} alt={bannerImage3} />
-            <div>
-              <img className='imagebanner91'
-                src={bannerImage9} alt="bannerImage9" />
-            </div>
+            <img className='bannerImage31' src={bannerImage3} alt={bannerImage3} />
+           
             <h2>Receive</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et
@@ -84,17 +81,22 @@ const Home = () => {
             <h6 className='learnMore1'> Learn more
               <img src={bannerImage5} alt="bannerImage5" /></h6>
           </div>
+           <div className='imagebanner91'>
+              <img 
+                src={bannerImage9} alt="bannerImage9" />
+            </div>
           
           {/* third image div */}
 
            <div className='bannerImage61'>
-            <img src={bannerImage6} alt={bannerImage6} />          
+            <img className='bannerImage611'
+              src={bannerImage6} alt={bannerImage6} />          
             <h2>Buy</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.</p>          
-            <h6 className='learnMore2'>Learn more
-              <img src={bannerImage5} alt="bannerImage5" /></h6>
+            <h6 className='learnMore2'>Learn more</h6>
+              <img className='bannerImage612' src={bannerImage5} alt="bannerImage5" />
           </div>
         </section>
         {/* section first closed */}
@@ -109,25 +111,27 @@ const Home = () => {
       
       {/* section Second start from here */}
 
-      <div>
+      
         <section className='section3'>
+          <div className='section31'>
             <h2>How it Works</h2>
-          <div className='section3_Box'>
+          </div>
+            <div className='section3_Box'>
             <div>
-              <div>
+              <div className='section3_Box1'>
                 <img src={bannerImage12} alt="bannerImage12" />
               </div>
               <h6>Create an account</h6>
               <p>Lorem ipsum dolor sit amet, consecteteu.</p>
             </div>
             <div>
-              <div>
+              <div className='section3_Box1'>
                 <img src={bannerImage11} alt="bannerImage11" />
               </div>
               <h6>Get authorization</h6>
               <p>Lorem ipsum dolor sit amet, consecteteu.</p>
             </div>
-            <div>
+            <div className='section3_Box1'>
               <div>
                 <img src={bannerImage10} alt="bannerImage10" />
               </div>
@@ -145,14 +149,15 @@ const Home = () => {
           <div className='bannerImage95'>
             <img src={bannerImage9} alt="bannerImage9" />
           </div>
-          <div>
+          <div >
             <h1>What our Client say</h1>
           </div>
-          <div className='bannerImage13'>
+        <div className='bannerImage131'>
+          <div className='colorDiv'></div>
             <div className='bannerImage130'>
               <img src={bannerImage13} alt="bannerImage13" />
             </div>
-            <div>
+            <div className='bannerImage14'>
               <img src={bannerImage14} alt="bannerImage14" />
             </div>
             <p>Amet in elementum nulla scelerisque dui, egestas at.
@@ -165,7 +170,7 @@ const Home = () => {
             </div>
           </div>
           <div className='bannerImage13'>
-            <div>
+            <div className='pagination'>
               <img src={bannerImage16} alt="bannerImage16" />
             </div>
             <div>
@@ -178,7 +183,7 @@ const Home = () => {
                 elementum amet vitae et etiam nec.
                 Varius volutpat hac adipiscing tincidunt pretium.
               </p>
-              <div>
+              <div className='bannerImage17'>
                 <img src={bannerImage17} alt="bannerImage17" />
               </div>
             </div>
@@ -186,7 +191,7 @@ const Home = () => {
         </section>
 
         {/*section closed */ }
-      </div>
+    
      
       
       {/*footer MAIN started */}
