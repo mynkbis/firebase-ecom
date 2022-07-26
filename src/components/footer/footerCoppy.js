@@ -6,8 +6,10 @@ import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Typography from "@mui/material/Typography";
+import '../../pages/home/home.css'
+import '../../pages/home/home1.css'
 
-const Footer = () => {
+const Foot0er = () => {
   const [value, setValue] = React.useState(0);
 
   return (
@@ -31,5 +33,5 @@ const Footer = () => {
   );
 }
 
-export default Footer
+export default Foot0er
 

@@ -4,10 +4,10 @@ import Container from '@mui/material/Container';
 import { Formik, Form } from 'formik'
 // import * as Yup from 'yup'
 import { Button, Card, TextField, Typography } from '@mui/material';
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import { collection, updateDoc,doc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom';
-import { storage } from '../firebase'
+import { storage } from '../../firebase'
 import {ref, uploadBytes} from "firebase/storage"
 import { v4 } from "uuid"
 import firebase from 'firebase/compat/app';

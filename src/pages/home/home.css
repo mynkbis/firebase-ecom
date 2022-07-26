@@ -59,6 +59,8 @@
 .section1 .mobilePic {
     margin-top: 9rem;
     margin-left: 48rem;
+    width: "38rem";
+    height: "48rem"
 }
 
 
@@ -255,10 +257,11 @@
 .section3 {
     height: 25rem;
     background-color: #c7e8fd;
+    margin-top: -2rem;
 }
 
 .section31 h2 {
-    padding-top: 5rem;
+    padding-top: 3rem;
     color: #4A99D3;
     font-size: 2rem;
     font-weight: 500;
@@ -268,7 +271,7 @@
 .section3_Box {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 
@@ -276,54 +279,87 @@
     margin-top: 2rem;
 }
 
+.section3_Box1 {
+    padding-bottom: 2.5rem;
+}
 
+.section3_Box h6 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.section3_Box p {
+    width: 15rem;
+    line-height: 2rem;
+}
 
 /*  forth section 4 */
 
-.section4 {}
-
-.bannerImage95 {}
-
 .section4 h1 {
     font-size: 2rem;
+    margin-top: 5rem;
+}
+
+.section41 {
+    display: flex;
+
+}
+
+
+
+
+.colorDiv {
+    background-color: #c7e8fd;
+    height: 26rem;
+    width: 40rem;
+    margin-top: 12.5rem;
+    margin-left: -9.5rem;
+
+}
+
+.bannerImage130 {
+    margin-top: -15.5rem;
+    margin-left: -80rem;
+}
+
+
+/* inverted comma*/
+.bannerImage14 {
+    margin-top: 18rem;
+    margin-left: -20rem;
+}
+
+
+.bannerImage131 p {
+    margin-left: 20rem;
+    text-align: justify;
+    width: 26rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    margin-top: -15rem;
+}
+
+.bannerImage131 h4 {
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+}
+
+.pagination img {
+    margin-left: 29rem;
+    margin-top: 4rem;
 }
 
 .bannerImage13 {
     margin-left: -60rem;
     display: block;
-}
-
-.colorDiv {
-    background-color: #c7e8fd;
-    height: 26rem;
-    width: 55rem;
-    margin-left: 60rem;
-    margin-top: 10rem;
-}
-
-.bannerImage130 {
-    margin-top: -32.5rem;
-    margin-left: 10rem;
-}
-
-.bannerImage14>img {}
-
-.bannerImage131 p {
-    margin-left: 130rem;
-    text-align: justify;
-    width: 26rem;
-    line-height: 1.5rem;
-    font-size: 1rem;
-    margin-top: -20rem;
-}
-
-.pagination img {
-    margin-left: 10rem;
+    margin-top: -15rem;
 }
 
 .bannerImage13 h2 {
     margin-left: 90rem;
-    margin-top: -20rem;
+    margin-top: -32rem;
 }
 
 .bannerImage13 p {
@@ -337,76 +373,22 @@
 .bannerImage17 img {
     margin-top: 2rem;
     margin-left: 90rem;
+    padding-bottom: 20rem;
 }
 
-
-
-/*footer MAIN started */
-
-
-.footerSecond1 {
-    height: 18rem;
-
+.banner16image img {
+    margin-top: 15rem;
+    padding-bottom: 10rem;
 }
 
-.footerSecond {
+.banBlue {
     display: flex;
-    justify-content: space-evenly;
-    background-color: #4A99D3;
-    color: #fff;
-    height: 15rem;
-    padding-top: 3rem;
+    justify-content: flex-start;
+    margin-top: -10rem;
 }
 
-.footerSecond div {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    line-height: 1.8rem;
-    text-align: start;
-}
-
-.footerSecond h2 {
-    margin-top: 1rem;
-    font-family: "objective";
-    font-size: 2rem;
-    font-weight: 500;
-}
-
-.footerSecond h3 {
-    text-decoration: underline;
-}
-
-.footerSecond h4 {
-    font-size: .8rem;
-    font-family: "objective";
-    font-weight: 400;
-}
-
-
-/* footer section */
-
-.footer {
-    color: white;
-    background-color: #4A99D3;
-    height: 3rem;
-    margin-top: -29.6rem;
-
-}
-
-.footer h6 {
-    margin-top: 1rem;
-    margin-left: 10rem;
-    font-size: .8rem;
-
-}
-
-
-.socialMedia {
-    margin-top: 1rem;
-    margin-left: 70rem;
-}
-
-
-.socialMedia img {
-    margin-right: 2rem;
+.banBrwn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -15rem;
 }

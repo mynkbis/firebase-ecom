@@ -4,7 +4,8 @@ import {initializeApp}  from "firebase/app";
 import  {getAuth, onAuthStateChanged} from "firebase/auth"
 import { getDoc, getFirestore, doc, setDoc } from "firebase/firestore"
 import { useEffect, useState } from 'react';
-import {getStorage } from "firebase/storage"
+import { getStorage } from "firebase/storage"
+
 const firebaseConfig = {
   
 apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

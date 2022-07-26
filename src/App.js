@@ -2,17 +2,16 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../src/pages/home/home.js'
-// import AdminLogin from './pages/adminLogin';
-import NavBar from './components/navbar/navbar';
-// import Footer from './components/footer';
+// import AdminLogin from './pages/adminLogin/adminLogin';
+ import NavBar from './components/navbar/navbar';
+ import Footer from './components/footer/footer';
 // import About from './pages/about';
 // import UserLogin from './pages/userLogin'
-// import Dashboard from './components/dashboard'
-// import ProductUpload from './pages/productUpload'
-// import ResetAdminPass from './pages/forgotAdminPass'
-// import Reset from './pages/forgotPass';
-// import EditProducts from './pages/editProducts';
-// import SignUp from './Pages/signUp';
+// import Dashboard from './components/adminDashboard/dashboard'
+// import ProductUpload from './pages/productUpload/productUpload'
+// import ResetAdminPass from './pages/adminForgetPassword/forgotAdminPass'
+// import Reset from './pages/adminForgetPassword/forgotPass';
+// import EditProducts from './pages/editProduct/editProducts';
 // import ErrorPage from './pages/error'
 
 function App() {
@@ -21,8 +20,8 @@ function App() {
     <NavBar/>
    <Routes>
       <Route exact path="/" element={<Home />} />
-        {/* <Route exact path="/home" element={<Home/>}/> */}
-        {/* <Route exact path='/' element={<AdminLogin />} /> 
+        {/* <Route exact path="/home" element={<Home/>}/>
+        <Route exact path='/' element={<AdminLogin />} /> 
         <Route exact path='/about' element={<About />} /> 
         <Route exact path='/login' element={<UserLogin />} /> 
          <Route exact path='/forgetpassword' element={<Reset />} /> 
@@ -32,6 +31,7 @@ function App() {
         <Route exact path='/admin/dashboard/editproductdetails' element={<EditProducts />} /> 
         <Route path='*' element={<ErrorPage />} />  */}
       </Routes>   
+      <Footer/>
       {/* <div className='footer'>
         <Footer />
         </div> */}
