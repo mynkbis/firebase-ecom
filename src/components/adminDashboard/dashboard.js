@@ -64,7 +64,7 @@ const admin="suryabisht.softprodigy@gmail.com"
      if (admin === localData) {
   SetIsAdmin(true)
      } else {
-       alert("You are not an admin")
+      //  alert("You are not an admin")
     }
    }, [])
 
@@ -99,13 +99,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align="left">DB id</StyledTableCell>
-            <StyledTableCell align="left">Product ID</StyledTableCell>
-            <StyledTableCell align="right">Title</StyledTableCell>
-            <StyledTableCell align="right">Category</StyledTableCell>
-            <StyledTableCell align="right">Price&nbsp;($)</StyledTableCell>
-              <StyledTableCell align="right">Details</StyledTableCell>
-              <StyledTableCell align="right">Stock</StyledTableCell>
+                {/* <StyledTableCell align="left">DB id</StyledTableCell> */}
+                <StyledTableCell align="left">Product ID</StyledTableCell>
+                    <StyledTableCell align="left">Image</StyledTableCell>
+            <StyledTableCell align="left">Title</StyledTableCell>
+            <StyledTableCell align="left">Category</StyledTableCell>
+            <StyledTableCell align="left">Price&nbsp;($)</StyledTableCell>
+              <StyledTableCell align="left">Details</StyledTableCell>
+            
+                       <StyledTableCell align="left">Stock</StyledTableCell>
               <StyledTableCell align="right">Edit</StyledTableCell>
                <StyledTableCell></StyledTableCell>
                 <StyledTableCell align="left">Delete</StyledTableCell>
@@ -114,22 +116,23 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
             <TableBody>
               {product.map((prod) => (
                 <StyledTableRow key={prod.id}>
-                  <StyledTableCell component="th" scope="row">{prod.id}</StyledTableCell>
-                  <StyledTableCell align="left">{prod.Id}</StyledTableCell>
-                  <StyledTableCell align="right">{prod.title}</StyledTableCell>
-                  <StyledTableCell align="right">{prod.category}</StyledTableCell>
-                  <StyledTableCell align="right">{prod.price}</StyledTableCell>
-                  <StyledTableCell align="right">{prod.description.substring(0, 10)}...</StyledTableCell>
-                  <StyledTableCell align="right">{prod.stock}</StyledTableCell>
-                  <StyledTableCell align="right">{prod.stock}</StyledTableCell>
+                  <StyledTableCell component="th" scope="row">{prod.Id}</StyledTableCell>
+                  {/* <StyledTableCell align="left">{prod.}</StyledTableCell> */}
+                  <StyledTableCell align="left"><img src={ prod.image} style={{width:"5rem", height:"5rem", "margin-right":"2rem" }} /></StyledTableCell>
+                  <StyledTableCell align="left">{prod.title}</StyledTableCell>
+                  <StyledTableCell align="left">{prod.category}</StyledTableCell>
+                  <StyledTableCell align="left">{prod.price}</StyledTableCell>
+                  <StyledTableCell align="left">{prod.description.substring(0, 10)}...</StyledTableCell>
+                  <StyledTableCell align="left">{prod.stock}</StyledTableCell>
+                  <StyledTableCell align="right"></StyledTableCell>
                   <StyledTableCell align="left">
-                    <ButtonBase sx={{ mr: 5 }}>
+                    <ButtonBase sx={{ mr: 4 }}>
                       <EditIcon onClick={() => { handleEdit(prod) }} />
                     </ButtonBase>
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     <ButtonBase >
-                      <DeleteForeverIcon sx={{ color: "blue", hover: { color: "red" } }} onClick={() => { handleDelete(prod.id) }} />
+                      <DeleteForeverIcon sx={{ color: "blue" }} onClick={() => { handleDelete(prod.id) }} />
                     </ButtonBase>
                   </StyledTableCell>
                 </StyledTableRow>
@@ -138,7 +141,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
           </Table>
         </TableContainer>
       </Box>
-      :  <Box>Kindly login first to use this feature </Box>}
+        : <div>{navigate("../profile")}</div>}
     </>
   )
 }

@@ -12,7 +12,7 @@ const Footer = () => {
 
   return (
 
-      <div className='footerSecond1'>
+      <div className='container'>
         <div className='footerSecond'>
           <h2>LOGO</h2>
           <div>

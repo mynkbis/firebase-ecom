@@ -8,7 +8,7 @@ import { db } from '../../firebase'
 import { collection, updateDoc,doc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../../firebase'
-import {ref, uploadBytes} from "firebase/storage"
+import {ref} from "firebase/storage"
 import { v4 } from "uuid"
 import firebase from 'firebase/compat/app';
 
@@ -21,7 +21,7 @@ const EditProducts = () => {
     const data=JSON.parse(localStorage.getItem('updatePro'))
 console.log(data)
     const navigation = useNavigate();
-
+ const [progress, setProgress]=useState(0)
 
      const [product, setProduct] = useState({
         id:data.id,
@@ -40,15 +40,6 @@ console.log(data)
         console.log("handle change id",product.id)
     }
 
-
-const handleImageUpload = (e) => {
-    if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
-    uploadBytes(imageRef, imageUpload).then(() => {
-        alert("upload successful")
-    })
-
-}
 
 const handleEdit = async (product) => {
        await updateDoc(doc(db, "Products", product.id), {
@@ -169,8 +160,10 @@ const handleEdit = async (product) => {
                                     </Typography>
                                 <Grid item xs={12}>
                                             <input type="file" defaultValue={product.Image}  onChange={(e)=>setImageUpload(e.target.files[0])} />
-                                            <Button variant='outlined' onClick={(e)=>handleImageUpload(e)}>Upload</Button>
-                                    </Grid>
+                                           <div className='progressBar'>
+                                                <div className='progress-bar progress-bar-striped mt-2' style={{ width: `${progress}%` }}>{progress}%</div>
+                                            </div>
+                                          </Grid>
                                     
                                 </Grid>
                               

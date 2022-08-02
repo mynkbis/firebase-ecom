@@ -27,6 +27,7 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import SignoutButton from "../signOut"
 import { NavLink } from 'react-router-dom'
+import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -40,7 +41,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Navbar = () => {
 const [user, setUser] = React.useState({})
-
+const{cartTotalQuantity}=useSelector((state)=>state.cart)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
   // eslint-disable-next-line no-unused-vars
   const [anchorElUser, setAnchorElUser] = React.useState(null);  
@@ -62,6 +63,8 @@ const [user, setUser] = React.useState({})
     setAnchorElUser(null);
   };
 
+  const isAdmin = JSON.parse(localStorage.getItem("Email"))
+  
 
 React.useEffect(() => {
         let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -72,7 +75,7 @@ React.useEffect(() => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -117,14 +120,26 @@ React.useEffect(() => {
                         </Link>
                       </Box>
                       <Box sx={{ mr: 8, pt: 2 }}>
+                        <Link style={{ color: "Blue", textDecoraton: "none" }} to="./About" >
+                          Products
+                        </Link>
+                      </Box>
+                      <Box sx={{ mr: 8, pt: 2 }}>
                         {/* conditon for user to show screen if user is logged in or not */}
-                        {!user && <Link style={{ color: "Blue", textDecoration: "none" }} to="./">
+                        {!user && <Link style={{ color: "Blue", textDecoration: "none" }} to="./login">
                           Login
                         </Link>
                         }
+                        {isAdmin === "suryabisht.softprodigy@gmail.com" && <NavLink style={{ color: "Blue", textDecoration: "none" }}
+                          to='../admin/dashboard'>Dashboard</NavLink>}
                         {user && <NavLink style={{ color: "Blue", textDecoration: "none" }}
-                          to='../admin/dashboard'>Dashboard</NavLink>
+                          to='../profile'>Profile</NavLink>
                         }
+                      </Box>
+                       <Box sx={{ mr: 8, pt: 2 }}>
+                        <Link style={{ color: "Blue", textDecoraton: "none" }} to="./About" >
+                          ContactUs
+                        </Link>
                       </Box>
                     </Box>
                   }
@@ -166,34 +181,53 @@ React.useEffect(() => {
                 About
               </Link>
             </Button>
+              <Button onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}>
+              <Link style={{ color: "white", textDecoration: "none" }} to="./products">
+                Products
+              </Link>
+            </Button>
             <Button onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
                 {/* conditon for user to show screen if user is logged in or not*/}
               {!user &&
-                <NavLink style={{ color: "white", textDecoration: "none" }} to="./"
+                <NavLink style={{ color: "white", textDecoration: "none" }} to="./login"
                 >
                   Login
                 </NavLink>
               } 
-              {user && <NavLink style={{ color: "white", textDecoration: "none" }} to='../admin/dashboard'>Dashboard</NavLink>}
+                {/* {isAdmin === "suryabisht.softprodigy@gmail.com" && <NavLink style={{ color: "Blue", textDecoration: "none" }}
+                          to='../admin/dashboard'>Dashboard</NavLink>} */}
+              {!isAdmin? user && <NavLink style={{ color: "white", textDecoration: "none" }} to='../profile'>Profile</NavLink> :
+                 isAdmin === "suryabisht.softprodigy@gmail.com" && <NavLink style={{ color: "white", textDecoration: "none" }} to='../admin/dashboard'>Dashboard</NavLink>}
+            </Button>
+            <Button onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}>
+              <Link style={{ color: "white", textDecoration: "none" }} to="./contactus">
+                ContactUs
+              </Link>
             </Button>
           </Box>
-          <SignoutButton />
-          <Box sx={{ flexGrow: 0 }}>
+         
+          <Box sx={{ flexGrow: 0}}>
             {/* <Tooltip> */}
-            {/* <IconButton>
+            {!isAdmin?
+             <IconButton>
               <Link style={{ color: "white", textDecoration: "none" }}
                 to="/cart">
                   <IconButton aria-label="cart">
-                    <StyledBadge badgeContent={0} color="primary">
+                    <StyledBadge badgeContent={cartTotalQuantity} color="primary">
                       <ShoppingCartIcon/>
                      </StyledBadge>
                   </IconButton>
               </Link>
-            </IconButton> */}
+              </IconButton> : <Typography sx={{ml:50}}> Hello Admin</Typography>}
             {/* </Tooltip> */}
           </Box>
+          <Typography>
+             <SignoutButton />
+</Typography>
         </Toolbar>
       </Container>
     </AppBar>

@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 // import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { auth, db, } from "../firebase"
+import { auth, db, } from "../../firebase"
 import { signInWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth"
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPopup } from "firebase/auth"
@@ -133,7 +133,7 @@ signInWithPopup(auth, provider)
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

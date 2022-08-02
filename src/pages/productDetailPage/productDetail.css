@@ -1,0 +1,36 @@
+.singleProductContainer {
+    width: 50%;
+    justify-items: center;
+    margin-top: 5rem;
+    line-height: 1.5rem;
+    margin-left: 3rem;
+    box-shadow: 2px 2px 20px #1976d2;
+    padding: 2rem;
+
+}
+
+.singleProductContainer1 {
+    width: 50%;
+    justify-items: center;
+    padding: 2rem;
+}
+
+.singleProductimg {
+    width: 50%;
+    height: auto;
+
+}
+
+.singleProductContainer>button {
+    margin-top: 2rem;
+    display: inline-block;
+
+    margin-right: 2rem;
+    border: 1px solid burlywood;
+}
+
+.singleProductContainer>button:hover {
+    background-color: #1976d2;
+    border: 1px solid rgb(110, 219, 238);
+    color: aliceblue;
+}

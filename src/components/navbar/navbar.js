@@ -2,15 +2,24 @@ import React from 'react'
 import './navBar.css'
 
 const Navbar = () => {
+
+window.addEventListener('scroll', function(){
+  var menu = document.querySelector('.nav');
+  menu.classList.toggle('sticky', window.scrollY > 0);
+})
+  
   return (
-    <div className='navBox'>
-      <p>LOGO</p>
-      <div className='group'>
-      <div className='group1'>Home</div>
-      <div className='group2'>About</div>
-        <div className='group2'>Contact Us</div>
-        </div>
-    </div>
+   
+      <nav class="nav" id='myNav'>
+       <h2>LOGO</h2>
+  <ul class="menu-ul">
+    <li className='menu-l1'>Home</li>
+    <li>About</li>
+    <li>Contact Us</li>
+  </ul>
+</nav>
+     
+    
   )
 }
 

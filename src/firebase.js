@@ -8,6 +8,14 @@ import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
   
+  // apiKey: "AIzaSyChAO87rX4XbB9LQF3tnNugJIKlT61XjQY",
+  // authDomain: "ecommerce-578c6.firebaseapp.com",
+  // projectId: "ecommerce-578c6",
+  // storageBucket: "ecommerce-578c6.appspot.com",
+  // messagingSenderId: "616320999448",
+  // appId: "1:616320999448:web:8f4df449fe0c7119be636d",
+  // measurementId: "G-BEYFPFHZHC"
+
 apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
 authDomain: process.env.REACT_APP_AUTH_DOMAIN,
  projectId: process.env.REACT_APP_PROJECT_ID,

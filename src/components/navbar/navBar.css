@@ -1,84 +1,86 @@
-.navBox {
-    color: #4A99D3;
-    position: absolute;
-    left: 2rem;
-    top: 3rem;
+* {
     font-family: "Objective";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 2.9rem;
-    display: inline-flex;
 
 }
 
-.navBox p {
-    margin-left: 16rem;
-    margin-right: -10rem;
-}
-
-.group {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 42rem;
-    font-size: 1.5rem;
-    color: #0F001A;
-    font-weight: 400;
-
-
-}
-
-.group div {
-    margin-right: 5rem;
-    margin-left: 2rem;
-}
-
-.group1 {
+.nav h2 {
     color: #4A99D3;
-    padding-right: 2rem
+    font-size: 3rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.nav {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    color: #000;
+    align-items: center;
+    justify-content: space-around;
+    transition: 0.5s;
+    padding-top: 1rem;
+
+}
+
+.nav.sticky {
+    height: 7rem;
+    transition: 0.5s;
+    background-color: #9ccaeb;
+
+}
+
+.menu-ul {
+    display: flex;
+    margin-right: 2rem;
+    justify-content: space-evenly;
+
+
+}
+
+.menu-ul li {
+
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+}
+
+.menu-ul li:hover {
+    background: rgb(92, 191, 204);
+    color: #fff;
+    border-radius: 3px;
+}
+
+.menu-l1 {
+    color: #4A99D3;
 }
 
 
-/* .navBox p {
-      color: #4A99D3;
-      position: absolute;
-      width: 128px;
-      height: 42px;
-      left: 245px;
-      top: 45px;
-
-      font-family: 'Objective';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 42px;
-  }
-
-  .group {
-      position: absolute;
-      width: 312px;
-      height: 19px;
-      left: 883px;
-      top: 59px;
-      display: flex;
-      justify-content: space-between;
-  }
-
-  .group1 {
-      color: #4A99D3;
-  } */
-
-@media only screen and (max-width: 768px) {
-
-    html {
-        font-size: 45%;
-        font-family: 'Times New Roman', Times, serif;
-
+@media screen and (max-width: 576px) {
+    * {
+        margin: 0;
     }
 
-    .navBox p {
-        margin-left: 5rem;
-        margin-right: -30rem;
+    html {
+        font-size: 60%;
+    }
+
+    #myNav {
+        display: block;
+        padding-left: 2rem;
+    }
+
+    #myNav ul {
+        display: block;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #4A99D3;
+        width: 10rem;
+        height: auto;
+    }
+
+    #myNav .menu-l1 {
+        color: #fff;
     }
 }

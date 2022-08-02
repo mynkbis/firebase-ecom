@@ -1,48 +1,13 @@
-import React from 'react'
-import './home.css'
-
-import bannerImage from '../../assets/images/Mockup.png'
-import bannerImage2 from '../../assets/images/Group 12.png'
-import bannerImage3 from '../../assets/images/1.png'
-import bannerImage4 from '../../assets/images/3.png'
-import bannerImage5 from '../../assets/images/ic_arrow_forward_24px.png'
-import bannerImage6 from '../../assets/images/2 20.png'
-import bannerImage7 from '../../assets/images/s1.png'
-import bannerImage8 from '../../assets/images/s2.png'
-import bannerImage10 from '../../assets/images/heroicons-outline_emoji-happy.png'
-import bannerImage11 from '../../assets/images/carbon_security.png'
-import bannerImage12 from '../../assets/images/Group.png'
-import bannerImage13 from '../../assets/images/image222.png'
-import bannerImage14 from '../../assets/images/fa-solid_quote-left.png'
-import bannerImage15 from '../../assets/images/Groupnav.png'
-import bannerImage16 from '../../assets/images/Mockup2.png'
-import bannerImage17 from '../../assets/images/store1.png'
-import banBlue from "../../assets/images/bue.png"
-import banBrwn from "../../assets/images/brwn.png"
-import Footer from '../../components/footer/footer'
-import ListingPage from '../listingPage/listingPage'
-
-const Home = () => {
-  return (
-    <>
-      <div className='listpage'>
-         <main>
-     
-        <div id='parent' className='parent container'>
-          
-          <div className='container1 commonPadding'>
-            
-        <section className='section1'>   
-              <div className='container2'>
-                
+<div className='container1 commonPadding'>
+        <section className='section1'>
+          <div className='container2'>
             <h2>New E-commerce App best for You</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Amet sed vulputate vitae velit dictum cursus amet. Turpis donec ut velit quis. Cursus commodo, eget urna, sapien amet.</p>
             <div className='store'>
               <img style={{ width: "19.5rem", height: "3rem" }} src={bannerImage2} alt="playstores" />
             </div>
-              </div>
-              
+          </div>
           <img className='mobilePic' src={bannerImage} alt='mock1' />
         </section>
       </div>
@@ -203,15 +168,3 @@ const Home = () => {
       <div className='banBrwn'>
         <img src={banBrwn } alt="banBrwn"/>
         </div>
-        </div>
-     
-      </main>
-     </div>
-     
-    </>
-    
-  )
-}
-
-
-export default Home

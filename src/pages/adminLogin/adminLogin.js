@@ -13,12 +13,15 @@ import * as Yup from 'yup';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+// import { useDispatch, useSelector } from 'react-redux';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { CardContent } from '@mui/material';
 import Validation from "../../components/validation"
 import { useDispatch, useSelector } from 'react-redux';
-import { login} from '../../redux/userSlice'
+import { login, logout, selectUser } from '../../redux/userSlice'
+
+
+// import { loginSuccess, loginFailed, loginPending } from '../../redux/userSlice';
 
 // eslint-disable-next-line no-unused-vars
 const DisplayingErrorMessagesSchema = Yup.object().shape({
@@ -31,32 +34,36 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
  });
  
 const AdminLogin = () => {
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
   const [fValues, setFValues] = useState({
     loginEmail: "",
     loginPassword:""
 })
-
+const user = useSelector(selectUser);
+  const dispatch = useDispatch();  
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-
-  const uservalue=useSelector()
-    const googleLogin = async () =>{
-    await signInWithPopup(auth, provider)
-          .then((result) => {
-             // const token = credential.accessToken;
-           // The signed-in user info.
-            localStorage.setItem("Email",JSON.stringify(result.user.email))
-            const user = result.user;
-
-       dispatch(
+  // const dispatch = useDispatch();
+  // const { isLoading, error, isAuth } = useSelector(state => state.login)
+  
+  // const uservalue=useSelector()
+  const googleLogin = async(userAuth) =>{
+      await signInWithPopup(auth, provider)        .then((result) => {
+          // const token = credential.accessToken;
+          // The signed-in user info.
+          localStorage.setItem("Email", JSON.stringify(result.user.email))
+        console.log('user wala', user)
+        console.log('email',auth)
+                    dispatch(
           login({
-            email: auth.user.email,
-          })
-        );
-           if (user) navigate("admin/dashboard")
+            email: user.email,                    
+                   })
+        )
+
+    
+           if (user) navigate("../admin/dashboard")
           }).catch((error) => {
            // Handle Errors here.
           //  alert("Please try again")
@@ -69,16 +76,17 @@ const AdminLogin = () => {
 
 const handleLogin = async () => {
   console.log("submiit", fValues)
-  localStorage.setItem("Email",JSON.stringify(fValues.loginEmail))
+  localStorage.setItem("Email", JSON.stringify(fValues.loginEmail))
+    // dispatch(loginPending());
     try {
       const user = await signInWithEmailAndPassword(auth, fValues.loginEmail, fValues.loginPassword)   
-      if (user) navigate("/admin/dashboard")
-      
+      if (user) navigate("../admin/dashboard")
        dispatch(
           login({
-            email: auth.user.email,
-          })
-        );
+            email: user.email,                    
+                   })
+        )
+     
              // using inbuit method of firebase fr signing in. 
       console.log("user loged in is ", user)
     } catch (error) {
