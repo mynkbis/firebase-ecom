@@ -3,6 +3,7 @@ import { auth } from '../firebase'
 import {onAuthStateChanged, signOut} from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 const SignoutButton = () => {
     const [user, setUser] = useState({})
     const Navigate = useNavigate();
@@ -11,6 +12,7 @@ const SignoutButton = () => {
     useEffect(() => {
         let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)  
+             {sessionStorage.setItem("User", JSON.stringify(currentUser.email))}   
         })
         return () => unsubscribe();
         
@@ -25,10 +27,10 @@ const SignoutButton = () => {
 
     return (
         <>
-            <div> 
-            
-                {!user ? true : <Button sx={{backgroundColor:"white", width: "5rem", height:"1.9rem", ml:15, hover :{background:"red"}}} onClick={logout}>logout</Button>}
-            </div>
+            <Typography component={"span"} > 
+                         
+                {!user ? true : <Button sx={{backgroundColor:"white", width: "5rem", height:"1.9rem", ml:15, }} onClick={logout}>logout</Button>}
+            </Typography>
         </>)
 }
 

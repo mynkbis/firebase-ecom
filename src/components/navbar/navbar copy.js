@@ -106,14 +106,14 @@ React.useEffect(() => {
                 }}
             >
               <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
+                <Typography textAlign="center" variant="div">
                   {
                     <Box>
-                      {/* <Box sx={{ mr: 8 }}>
+                      <Box sx={{ mr: 8 }}>
                         <Link style={{ color: "Blue", textDecoration: "none" }} to="/home" >
                           Home
                           </Link>
-                        </Box> */}
+                        </Box>
                       <Box sx={{ mr: 8, pt: 2 }}>
                         <Link style={{ color: "Blue", textDecoraton: "none" }} to="./About" >
                           About
@@ -148,33 +148,15 @@ React.useEffect(() => {
             </Menu>
           </Box>
 
-            {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none"
-            }}
-          >
-            LOGO
-          </Typography> */}
+       
 
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* <Button onClick={handleCloseNavMenu}
+            <Typography variant="div" sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Button onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }} >
               <Link style={{ color: "white", textDecoration: "none" }} to="./Home">
                 Home
               </Link>
-            </Button> */}
+            </Button>
             <Button onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}>
               <Link style={{ color: "white", textDecoration: "none" }} to="./About">
@@ -202,18 +184,17 @@ React.useEffect(() => {
               {!isAdmin? user && <NavLink style={{ color: "white", textDecoration: "none" }} to='../profile'>Profile</NavLink> :
                  isAdmin === "suryabisht.softprodigy@gmail.com" && <NavLink style={{ color: "white", textDecoration: "none" }} to='../admin/dashboard'>Dashboard</NavLink>}
             </Button>
-            <Button onClick={handleCloseNavMenu}
+            <Button type="button" onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}>
               <Link style={{ color: "white", textDecoration: "none" }} to="./contactus">
                 ContactUs
               </Link>
             </Button>
-          </Box>
+          </Typography>
          
-          <Box sx={{ flexGrow: 0}}>
+          <Typography variant="div" sx={{ flexGrow: 0}}>
             {/* <Tooltip> */}
-            {!isAdmin?
-             <IconButton>
+            {!isAdmin?           
               <Link style={{ color: "white", textDecoration: "none" }}
                 to="/cart">
                   <IconButton aria-label="cart">
@@ -222,9 +203,9 @@ React.useEffect(() => {
                      </StyledBadge>
                   </IconButton>
               </Link>
-              </IconButton> : <Typography sx={{ml:50}}> Hello Admin</Typography>}
+            : <Typography sx={{ml:50}}> Hello Admin</Typography>}
             {/* </Tooltip> */}
-          </Box>
+          </Typography>
           <Typography>
              <SignoutButton />
 </Typography>

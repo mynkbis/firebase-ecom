@@ -15,13 +15,15 @@ import AdminLogin from './pages/adminLogin/adminLogin';
  import ErrorPage from './pages/error'
 import DashboardUser from './components/userDashboard/dashboardUser';
 import ListingPage from './pages/listingPage/listingPage';
- import UserSignUp from './pages/userSignUp/signUp'
+import UserSignUp from './pages/userSignUp/signUp'
 import Cart from './components/cart/cart'
 import { SingleProductDetails } from './pages/productDetailPage/productDetail';
+import CheckOutPage from './pages/checkout/checkout'
+import StripeContainer from './pages/payment/stripeContainer'
 
 function App() {
   return (
-    <div className="App">
+    <>
     <NavBar/>
    <Routes>
       <Route exact path="/" element={<Home />} /> 
@@ -39,13 +41,15 @@ function App() {
         <Route exact path='/cart' element={< Cart />} /> 
          <Route exact path='/admin/forgetpassword' element={<ResetAdminPass/>} /> 
         <Route exact path='/admin/dashboard/editproductdetails' element={<EditProducts />} /> 
+        <Route exact path='/checkout' element={<CheckOutPage />} />
+        <Route exact path='/payment' element={<StripeContainer/>}/>
         <Route path='*' element={<ErrorPage />} /> 
       </Routes>   
       
       {/* <div className='footer'>
         <Footer />
         </div> */}
-    </div>
+    </>
   );
 }
 

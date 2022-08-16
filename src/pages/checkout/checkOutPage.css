@@ -1,0 +1,45 @@
+.formBox {
+    display: flex;
+    flex-direction: wrap;
+    border: 2px solid rgb(204, 187, 187);
+    box-shadow: 2px 2px 20px;
+    padding: 5px;
+    margin-top: 10px;
+    padding-top: 20px;
+    max-width: 330px;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+    left: 40vw;
+}
+
+
+.paymentContainer {
+    justify-content: space-between;
+    width: 800px;
+    padding: 20px;
+
+    color: rgb(4, 61, 57);
+    position: relative;
+    left: 25vw;
+    box-shadow: 2px 2px 20px rgb(47, 90, 78);
+    height: 300px;
+    border-radius: 5px;
+
+
+}
+
+.cardPayment {
+    height: 100px;
+    padding: 25px;
+
+}
+
+.cardHolder {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-size: larger;
+
+}

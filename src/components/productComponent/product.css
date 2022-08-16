@@ -1,34 +1,44 @@
-.productBox {
-    width: 50%;
-    height: auto;
-    margin-top: 10px;
-    margin-left: 50px;
-    box-shadow: 1px .1px 20px #1976d2;
-    line-height: 2rem;
-    word-spacing: 1rem;
-    text-overflow: inherit;
-}
-
 .main {
     box-sizing: content-box;
     width: 100%;
     height: auto;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+
+.productBox {
+    width: 330px;
+    height: 500px;
+    border: 1px solid #9ccaeb;
+    line-height: 1rem;
+    word-spacing: 1rem;
+    text-overflow: inherit;
 
 }
 
 .productBox1 {
     padding: 2rem;
     width: 100%;
+
 }
 
 .productBox1>img {
-    width: 350px;
+    width: 180px;
     height: 200px;
     margin-left: 3.5rem;
-    box-shadow: 1px .1px 20px #1976d2;
     border-radius: .5rem;
+}
 
+.button {
+    background-color: #9ccaeb;
+    width: 120px;
+    border-radius: 5px;
+}
 
+.button Button:hover {
+    background-color: #9ccaeb;
+    font-weight: 800;
 }

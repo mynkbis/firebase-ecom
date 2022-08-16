@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { Formik, Form } from 'formik'
-// import * as Yup from 'yup'
 import { Button, Card, TextField, Typography } from '@mui/material';
 import { db } from '../../firebase'
 import { collection, updateDoc,doc } from 'firebase/firestore'
@@ -11,6 +10,8 @@ import { storage } from '../../firebase'
 import {ref} from "firebase/storage"
 import { v4 } from "uuid"
 import firebase from 'firebase/compat/app';
+import './editProducts.css'
+
 
 const EditProducts = () => {
      const [imageUpload, setImageUpload] = useState(null);
@@ -70,14 +71,14 @@ const handleEdit = async (product) => {
 
       return (
           <Container sx={{ mt: 5 }}>
-               <Typography>
+               <Typography variant="h4">
                                         Product Details
                                         </Typography>
-      <Card>
-        <Grid container spacing={2} sx={{mt:5}}>
+      <Card className="cardBox">
+        <Grid className='gridBox' container spacing={2} sx={{mt:5}}>
             <Grid item>
-                       <Formik>
-                        <Form>
+                       <Formik className="form">
+                        <Form className="form0">
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <Typography>
@@ -106,23 +107,7 @@ const handleEdit = async (product) => {
                                     />
                                         </Grid>
 </Grid>
-{/* 
-    <Grid item xs={12}>
-                                    <Typography>
-                                        DB id
-                                        </Typography>
-                                          <Grid item xs={12}>
-                                 <TextField name="Id" 
-                                                label={data.id}
-                                                  defaultValue={product.id}
-                                                  disabled
-                                                onChange={(e)=>handleChange(e)}
-                                                
-                                    />
-                                          </Grid>
-                                           </Grid> */}
-
-                                      
+                                    
 
                                         <Grid item xs={12}>
                                     <Typography>

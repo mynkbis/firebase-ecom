@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,22 +17,33 @@ import { auth, db, } from "../../firebase"
 import { signInWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth"
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithPopup } from "firebase/auth"
+import { onAuthStateChanged } from 'firebase/auth'
 
  const UserLogin = () => {
 
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+const [user, setUser] = useState({})
+   React.useEffect(() => {
+     let unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+       setUser(currentUser)
+     })
+    
+     return () => unsubscribe()
+   }, []);
+  
+  
+   
+// function Copyright(props) {
+//   return (
+//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//       {'Copyright © '}
+//       <Link color="inherit" href="#">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
    
   const handleSubmit = (event) => {
     event.preventDefault();

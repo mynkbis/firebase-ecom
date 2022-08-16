@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from '../../redux/cartSlice'
@@ -9,23 +9,27 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Button from "@mui/material/Button";
 import Card from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { ButtonBase, Rating } from '@mui/material';
+  import { styled } from '@mui/material/styles';
+  import Table from '@mui/material/Table';
+  import TableBody from '@mui/material/TableBody';
+  import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+  import TableContainer from '@mui/material/TableContainer';
+  import TableHead from '@mui/material/TableHead';
+  import TableRow from '@mui/material/TableRow';
+  import Paper from '@mui/material/Paper';
+  import { ButtonBase, Rating } from '@mui/material';
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart  = useSelector((state) => state.cart)
   // console.log("from cart", cart);
+  const [total, setTotal] = useState(); 
+  const user=JSON.parse(sessionStorage.getItem("User"))
 
   useEffect(() => {
     dispatch(getTotals());
+    setTotal(cart.cartTotalAmount)
+  
   },[dispatch,cart])
   
   const handleRemoveFromCart = (cartItem) => {
@@ -35,7 +39,7 @@ const Cart = () => {
   const handleClear = () => {
     // localStorage.clear();
     dispatch(clearCart());
-    navigate('/')
+    navigate('../products')
     alert("cart is cleared continue shopping")
   }
   
@@ -47,6 +51,18 @@ const Cart = () => {
     dispatch(addToCart(cartItem))
   }
   
+
+  const handleCheckOut = () => {
+    if (!user) {
+      alert("Kindly Login to place order");
+      navigate('../login');
+    }
+    else { navigate("../checkout") }
+    
+    localStorage.setItem("total", total)
+  }
+
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -77,11 +93,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         cart.cartItems.length === 0 ? (
           <Typography className="cart-empty">
             <Typography>Your cart is empty</Typography>
-            <Typography className="start-shopping">
-            <Link to="/">              
-              <Button>Continue shopping</Button>
-              </Link>
-            </Typography>
+        
             </Typography>)
           : (
 
@@ -148,26 +160,37 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         </TableContainer>
       </Box>) }
 
-  <Grid>
-                <Grid className="cart-summary">
-                <Grid className="subtotal">
-                <span>Total Cart Value: </span>
-                <span   className="amount">${cart.cartTotalAmount}</span>
-              </Grid>                   
-                  <Grid className="continue-shopping">
-                    <Link to='/products'>
-                       <Typography variant="h5">Continue Shopping</Typography>
-                    </Link>
+     
+      <Grid>
+        {/* {cart && cart.length < 1 && !cart ? <h1>"Please add something in cart to preceed checkout"</h1> : */}
+        
+          <Grid className="cart-summary">
+            <Grid className="subtotal">
+              <span>Total Cart Value: </span>
+              <span className="amount">${cart.cartTotalAmount}</span>
+            </Grid>
+            <ButtonBase>
+              <Button sx={{ color: "white", backgroundColor: "#1976d2", '&:hover': { backgroundColor: "red" } }} onClick={() => handleClear()}>Clear Cart</Button>
+            </ButtonBase>
           </Grid>
-          <ButtonBase>
-            <Button sx={{ color: "white", backgroundColor: "#1976d2",'&:hover':{backgroundColor:"red"}  }} onClick={() => handleClear()}>Clear Cart</Button>
-</ButtonBase>
-          </Grid>,
-           
+          <Grid className="continue-shopping">
+            <Link to='/products'>
+              <Typography variant="h5">Continue Shopping</Typography>
+            </Link>
+          </Grid>
                                    
-              </Grid>
-
- 
+        </Grid>
+      
+  <div>Summary
+          <div>
+            <span>subtotal: {cart.length} items</span>
+          </div>
+          <span>Total Price: ${total}</span>
+        </div>
+        <div>
+        
+          <button onClick={() => { handleCheckOut() }}>CheckOut</button>  
+        </div>
       </Grid>
   )
 }

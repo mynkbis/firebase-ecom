@@ -1,0 +1,12 @@
+.cardBox :root {
+    display: flex;
+}
+
+.gridBox :root {
+    display: inline;
+
+}
+
+.form0:root {
+    display: flex;
+}

@@ -64,7 +64,7 @@ const handleAddToCart = (prod) => {
 <Typography className='productBox'>
           <Typography className='productBox1'>
             
-            <img src={prod.image} alt={prod.title} style={{ width:"50%", height:"auto"}} onClick={()=>handleSinglePage(prod)} />
+            <img src={prod.image} alt={prod.title} onClick={()=>handleSinglePage(prod)} />
             <Typography><strong>Title:</strong> {prod.title }</Typography>
               <Typography><strong>Price:</strong> ${prod.price}</Typography>
 
@@ -72,19 +72,23 @@ const handleAddToCart = (prod) => {
                 <Typography> <strong>InStock:</strong> {prod.stock}</Typography>}
               
               
-            <Typography className='product details'><strong>Details:</strong> {prod.description.substring(0,65)}...</Typography>
+            <Typography className='product details'><strong>Details:</strong> {prod.description.substring(0,25)}...</Typography>
             <Typography><strong>Category: </strong>{prod.category}</Typography>
               <Typography><br /></Typography>
-
-              { !prod.stock?  <> <Button  disabled onClick={() => handleAddToCart(prod)} >Add to cart</Button>  
-                <div className="cart-product-quantity">
-                    <Button disabled onClick={() => handleDecreaseCart(prod)}>
-                      - </Button>
-                    <div className="count">{cart.count}</div>
-                    <Button disabled onClick={() => handleAddToCart(cart.cartItem)}>+</Button>
-                  </div></>
-:    <Button onClick={() => handleAddToCart(prod)} >Add to cart</Button>}
+<Typography className='button'  >
+                {!prod.stock ? ""
+             
+             
           
+                  : <Button onClick={() => handleAddToCart(prod)} >Add to cart</Button>}
+                    {/*  <Typography > <Button onClick={() => handleAddToCart(prod)} >Add to cart</Button>
+                <Typography className="cart-product-quantity">
+                    <Button  onClick={() => handleDecreaseCart(prod)}>
+                      - </Button>
+                    <Typography className="count">{cart.count}</Typography>
+                    <Button  onClick={() => handleAddToCart(cart.cartItem)}>+</Button>
+                </Typography> */}
+          </Typography>
 </Typography>
           </Typography>
         )
