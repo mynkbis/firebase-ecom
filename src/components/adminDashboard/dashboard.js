@@ -89,11 +89,16 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
  
+  const nextpage = () => {
+  navigate('../admin/dashboard/orderdetails')
+}
+  
   return (
     <>
       {isAdmin? <Box>
         <Box sx={{ mt: 4, mb: 5 }}>
           <Button variant="outlined" onClick={() => { handleUploadProduct() }}>Upload a Product</Button>
+            <Button variant="outlined" onClick={() => { nextpage() }}>Order History</Button>
         </Box>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -118,7 +123,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
                 <StyledTableRow key={prod.id}>
                   <StyledTableCell component="th" scope="row">{prod.Id}</StyledTableCell>
                   {/* <StyledTableCell align="left">{prod.}</StyledTableCell> */}
-                  <StyledTableCell align="left"><img src={ prod.image} style={{width:"5rem", height:"5rem", "margin-right":"2rem" }} /></StyledTableCell>
+                  <StyledTableCell align="left"><img src={ prod.image} style={{width:"5rem", height:"5rem", "marginRight":"2rem" }} /></StyledTableCell>
                   <StyledTableCell align="left">{prod.title}</StyledTableCell>
                   <StyledTableCell align="left">{prod.category}</StyledTableCell>
                   <StyledTableCell align="left">{prod.price}</StyledTableCell>

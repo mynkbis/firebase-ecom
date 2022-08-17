@@ -20,7 +20,7 @@ import Cart from './components/cart/cart'
 import { SingleProductDetails } from './pages/productDetailPage/productDetail';
 import CheckOutPage from './pages/checkout/checkout'
 import StripeContainer from './pages/payment/stripeContainer'
-
+import OrderDetails from './components/adminDashboard/orderdetails/orderdetails'
 function App() {
   return (
     <>
@@ -37,6 +37,7 @@ function App() {
         <Route exact path='/productdetails' element={<SingleProductDetails />} /> 
         <Route exact path='/products' element={<ListingPage />} /> 
         <Route exact path='/admin/dashboard' element={<Dashboard />} /> 
+         <Route exact path='/admin/dashboard/orderdetails' element={<OrderDetails />} /> 
         <Route exact path='/admin/dashboard/uploadproduct' element={<ProductUpload />} /> 
         <Route exact path='/cart' element={< Cart />} /> 
          <Route exact path='/admin/forgetpassword' element={<ResetAdminPass/>} /> 
